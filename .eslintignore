@@ -1,0 +1,4 @@
+node_modules
+.vscode
+commitlint.config.js
+dist

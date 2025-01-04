@@ -1,0 +1,79 @@
+.
+├── commitlint.config.js
+├── estrutura.txt
+├── index.html
+├── package.json
+├── postcss.config.mjs
+├── public
+│   └── img
+│       ├── icon.png
+│       └── logo.png
+├── README.md
+├── src
+│   ├── api
+│   │   ├── ApiAdapter
+│   │   │   └── index.ts
+│   │   ├── HttpClient
+│   │   │   └── index.ts
+│   │   └── PartnerApiService
+│   │       └── index.ts
+│   ├── components
+│   │   ├── Header
+│   │   │   └── index.tsx
+│   │   └── LoadingFallback
+│   │       └── index.tsx
+│   ├── config
+│   │   └── routes
+│   │       └── index.ts
+│   ├── domain
+│   │   ├── models
+│   │   │   └── User
+│   │   │       └── index.ts
+│   │   └── useCases
+│   │       └── AuthUseCases
+│   │           └── index.ts
+│   ├── global.css
+│   ├── hooks
+│   │   └── useAuth
+│   │       └── index.ts
+│   ├── main.tsx
+│   ├── presentation
+│   │   ├── layouts
+│   │   │   └── MainLayout
+│   │   │       └── index.tsx
+│   │   └── views
+│   │       ├── DashboardView
+│   │       │   └── index.tsx
+│   │       ├── HomeView
+│   │       │   └── index.tsx
+│   │       ├── LoginView
+│   │       │   └── index.tsx
+│   │       ├── NotFoundView
+│   │       │   └── index.tsx
+│   │       └── SigninView
+│   │           └── index.tsx
+│   ├── routes
+│   │   ├── AppRoutes.tsx
+│   │   ├── PrivateRoute
+│   │   │   └── index.tsx
+│   │   └── PublicRoute
+│   │       └── index.tsx
+│   ├── services
+│   │   └── AuthService
+│   │       ├── index.ts
+│   │       └── types.ts
+│   ├── store
+│   │   └── AuthContext
+│   │       ├── index.tsx
+│   │       └── types.ts
+│   ├── styles
+│   │   └── tailwind.css
+│   └── vite-env.d.ts
+├── tailwind.config.ts
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+├── vite.config.ts
+└── yarn.lock
+
+36 directories, 40 files
