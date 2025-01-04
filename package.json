@@ -11,7 +11,7 @@
     "lint:staged": "lint-staged",
     "preview": "vite preview",
     "prepare": "husky",
-    "test": "jest"
+    "test": "jest --passWithNoTests"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^6.6.3",
