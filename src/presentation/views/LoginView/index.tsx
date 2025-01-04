@@ -15,7 +15,7 @@ const LoginView = () => {
       login(email, password)
       navigate('/dashboard')
     } catch (error) {
-      alert(error.message)
+      alert(error)
     }
   }
 

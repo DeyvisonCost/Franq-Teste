@@ -17,7 +17,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     try {
       AuthService.login(email, password)
       setIsAuthenticated(true)
-    } catch (error) {}
+    } catch (error) {
+      alert(error)
+    }
   }
 
   const logout = () => {

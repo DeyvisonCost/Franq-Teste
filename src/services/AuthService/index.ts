@@ -1,8 +1,9 @@
-import { User } from './types'
+import { User } from '@/domain/models/User'
 
 export const AuthService = {
-  register: (user: User) => {
-    localStorage.setItem('user', JSON.stringify(user))
+  register(user: User) {
+    const newUser = new User(user.email, user.password, user.name)
+    localStorage.setItem('user', JSON.stringify(newUser))
     return { message: 'Usuário registrado com sucesso!' }
   },
 
