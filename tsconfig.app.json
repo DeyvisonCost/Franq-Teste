@@ -20,6 +20,8 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
+    "types": ["node", "jest"],
+
     /* Additional options from 2023 */
     "outDir": "dist",
     "esModuleInterop": true,
@@ -33,5 +35,6 @@
     }
   },
 
-  "include": ["src/**/*", "tailwind.config.ts", "postcss.config.mjs"]
+  "include": ["src/**/*", "tailwind.config.ts", "postcss.config.mjs", "jest.config.js"],
+  "exclude": ["node_modules", "dist"]
 }
