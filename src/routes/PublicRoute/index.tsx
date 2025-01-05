@@ -9,7 +9,7 @@ export const PublicRoute: FC = () => {
   const { isAuthenticated } = useAuth()
   const location = useLocation()
 
-  const restrictedRoutes = [ROUTES.LOGIN, ROUTES.SIGNIN]
+  const restrictedRoutes = [ROUTES.LOGIN, ROUTES.SIGNUP]
   const isRestrictedRoute = restrictedRoutes.includes(location.pathname)
 
   if (isAuthenticated && isRestrictedRoute) {

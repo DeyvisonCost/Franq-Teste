@@ -25,7 +25,7 @@ export const Header: FC = () => {
                 </Link>
               </li>
               <li>
-                <Link to={ROUTES.SIGNIN} className="hover:underline">
+                <Link to={ROUTES.SIGNUP} className="hover:underline">
                   Sign up
                 </Link>
               </li>

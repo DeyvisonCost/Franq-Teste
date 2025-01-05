@@ -11,7 +11,7 @@ import { PublicRoute } from './PublicRoute'
 
 const HomeView = lazy(async () => await import('@/presentation/views/HomeView'))
 const LoginView = lazy(async () => await import('@/presentation/views/LoginView'))
-const SigninView = lazy(async () => await import('@/presentation/views/SigninView'))
+const SignupView = lazy(async () => await import('@/presentation/views/SignupView'))
 const DashboardView = lazy(async () => await import('@/presentation/views/DashboardView'))
 const NotFoundView = lazy(async () => await import('@/presentation/views/NotFoundView'))
 
@@ -24,7 +24,7 @@ export const AppRoutes: FC = () => {
             <Route element={<PublicRoute />}>
               <Route path={ROUTES.HOME} element={<HomeView />} />
               <Route path={ROUTES.LOGIN} element={<LoginView />} />
-              <Route path={ROUTES.SIGNIN} element={<SigninView />} />
+              <Route path={ROUTES.SIGNUP} element={<SignupView />} />
             </Route>
 
             <Route element={<PrivateRoute />}>
