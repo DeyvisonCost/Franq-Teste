@@ -9,11 +9,11 @@ import { MainLayout } from '@/presentation/layouts/MainLayout'
 import { PrivateRoute } from './PrivateRoute'
 import { PublicRoute } from './PublicRoute'
 
-const HomeView = lazy(async () => await import('@/presentation/views/HomeView'))
-const LoginView = lazy(async () => await import('@/presentation/views/LoginView'))
-const SignupView = lazy(async () => await import('@/presentation/views/SignupView'))
-const DashboardView = lazy(async () => await import('@/presentation/views/DashboardView'))
-const NotFoundView = lazy(async () => await import('@/presentation/views/NotFoundView'))
+const Home = lazy(async () => await import('@/presentation/views/Home'))
+const Login = lazy(async () => await import('@/presentation/views/Login'))
+const Signup = lazy(async () => await import('@/presentation/views/Signup'))
+const Dashboard = lazy(async () => await import('@/presentation/views/Dashboard'))
+const NotFound = lazy(async () => await import('@/presentation/views/NotFound'))
 
 export const AppRoutes: FC = () => {
   return (
@@ -22,17 +22,17 @@ export const AppRoutes: FC = () => {
         <Routes>
           <Route element={<MainLayout />}>
             <Route element={<PublicRoute />}>
-              <Route path={ROUTES.HOME} element={<HomeView />} />
-              <Route path={ROUTES.LOGIN} element={<LoginView />} />
-              <Route path={ROUTES.SIGNUP} element={<SignupView />} />
+              <Route path={ROUTES.HOME} element={<Home />} />
+              <Route path={ROUTES.LOGIN} element={<Login />} />
+              <Route path={ROUTES.SIGNUP} element={<Signup />} />
             </Route>
 
             <Route element={<PrivateRoute />}>
-              <Route path={ROUTES.DASHBOARD} element={<DashboardView />} />
+              <Route path={ROUTES.DASHBOARD} element={<Dashboard />} />
             </Route>
           </Route>
 
-          <Route path="*" element={<NotFoundView />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
     </Router>
