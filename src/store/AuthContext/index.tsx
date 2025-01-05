@@ -9,10 +9,15 @@ export const AuthContext = createContext<AuthContextProps | undefined>(undefined
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    const hasToken = isAuthenticatedUseCase()
-    setIsAuthenticated(hasToken)
+    const checkAuth = async () => {
+      const hasToken = isAuthenticatedUseCase()
+      setIsAuthenticated(hasToken)
+      setIsLoading(false)
+    }
+    checkAuth()
   }, [])
 
   const login = async (email: string, password: string) => {
@@ -31,6 +36,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     } catch (error) {
       alert('Não foi possível realizar o logout. Tente novamente.')
     }
+  }
+
+  if (isLoading) {
+    return null
   }
 
   return <AuthContext.Provider value={{ isAuthenticated, login, logout }}>{children}</AuthContext.Provider>
