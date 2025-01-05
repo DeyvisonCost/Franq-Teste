@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { ROUTES } from '@/config/routes'
-import { AuthService } from '@/services/AuthService'
+import { registerUseCase } from '@/domain/useCases/AuthUseCases/registerUseCase'
 
 const SigninView = () => {
   const [email, setEmail] = useState('')
@@ -12,7 +12,7 @@ const SigninView = () => {
 
   const handleRegister = () => {
     try {
-      const response = AuthService.register({ email, password })
+      const response = registerUseCase(email, password)
       alert(response.message)
       navigate(ROUTES.LOGIN)
     } catch (error) {
