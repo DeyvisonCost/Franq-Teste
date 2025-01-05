@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client'
 import { AppRoutes } from '@/routes/AppRoutes'
 import { AuthProvider } from '@/store/AuthContext'
 import './global.css'
+import './styles/tailwind.css'
 
 const rootElement = document.getElementById('root')
 if (!rootElement) {
