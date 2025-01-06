@@ -2,17 +2,18 @@ import { HttpMethod, IHttpClient } from '@/infra/api/HttpClientContract'
 import { APIResponse } from '@/presentation/views/Home/home.types'
 import { getEnv } from '@/utils'
 
-export interface ICreateHomeStocksService {
-  exec: () => Promise<APIResponse>
+export interface ICreateFetchStocksService {
+  fetchAllStocks: () => Promise<APIResponse>
 }
 
-export class CreateHomeStocksService implements ICreateHomeStocksService {
+export class CreateFetchStocksService implements ICreateFetchStocksService {
   constructor(private readonly HttpClient: IHttpClient) {}
-  async exec(): Promise<APIResponse> {
+  async fetchAllStocks(): Promise<APIResponse> {
     try {
       const responseHomeStocks = await this.HttpClient.sendRequest<APIResponse>({
         method: HttpMethod.GET,
-        endpoint: `/finance${getEnv('VITE_SECRET_KEY')}`,
+        endpoint: `${getEnv('VITE_SECRET_KEY')}`,
+        // endpoint: `/finance${getEnv('VITE_SECRET_KEY')}`,
       })
 
       return responseHomeStocks
