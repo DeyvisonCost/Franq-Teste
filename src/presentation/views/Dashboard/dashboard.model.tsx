@@ -5,16 +5,22 @@ import { APIResponseSchema } from '@/presentation/views/Dashboard/dashboard.sche
 import { ApiResponse } from '@/presentation/views/Dashboard/dashboard.types'
 
 export const useDashboardModel = () => {
-  const [quotations, setQuotations] = useState<ApiResponse | null>()
+  const [quotations, setQuotations] = useState<ApiResponse | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   const getQuotations = useCallback(async () => {
     try {
+      setIsLoading(true)
+      setError(null) 
       const response = await fetchQuotations()
-
       const validResponse = APIResponseSchema.parse(response)
-
       setQuotations(validResponse as ApiResponse)
-    } catch (err) {}
+    } catch (err) {
+      setError('Erro ao carregar os dados. Tente novamente mais tarde.') // Mensagem de erro genérica
+    } finally {
+      setIsLoading(false)
+    }
   }, [])
 
   useEffect(() => {
@@ -23,5 +29,7 @@ export const useDashboardModel = () => {
 
   return {
     quotations,
+    isLoading,
+    error
   }
 }

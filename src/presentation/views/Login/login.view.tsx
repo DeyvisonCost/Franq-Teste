@@ -17,7 +17,8 @@ export const LoginView = ({
   return (
     <main className="h-screen flex flex-col md:flex-row w-full">
       <div className="hidden md:block md:w-3/5 bg-primary-foreground">
-        <img src="img/backgroundLogin.png" alt="background" className="object-cover w-full h-full" />
+      <img src="img/backgroundLogin.png" alt="background" className="object-cover w-full h-full" loading="lazy" />
+
       </div>
 
       <section className="w-full md:w-2/5 flex items-center justify-center p-6 bg-background">

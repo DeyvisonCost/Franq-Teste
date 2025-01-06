@@ -15,10 +15,25 @@ export const HomeView = ({
   getVariationColor,
   openModalWithContent,
   closeModal,
+  isLoading,
+  error
 }: ReturnType<typeof useHomeModel>) => {
-  if (!stocks) {
+  if (isLoading) {
     return <LoadingFallback />
   }
+
+  if (error) {
+    return <div className="text-center p-4 text-gray-500 text-xl mt-4">{error}</div> 
+  }
+
+  if (!stocks) {
+    return (
+      <div className="text-center p-4 text-gray-500 text-xl mt-4">
+        Nenhum dado disponível
+      </div>
+    )
+  }
+
 
   const { currencies, stocks: stockData } = stocks.results
 

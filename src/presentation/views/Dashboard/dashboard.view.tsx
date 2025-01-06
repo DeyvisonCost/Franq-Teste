@@ -14,7 +14,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { useDashboardModel } from '@/presentation/views/Dashboard/dashboard.model'
 import { chartConfig, chartData } from '@/presentation/views/Dashboard/mock'
 
-export const DashboardView = ({ quotations }: ReturnType<typeof useDashboardModel>) => {
+export const DashboardView = ({ quotations, isLoading, error }: ReturnType<typeof useDashboardModel>) => {
   const [timeRange, setTimeRange] = useState('90d')
 
   const filteredData = chartData.filter((item) => {
@@ -103,13 +103,17 @@ export const DashboardView = ({ quotations }: ReturnType<typeof useDashboardMode
 
       <CardFooter className="flex flex-col gap-3 mt-4">
         <div className="text-xl font-semibold">Cotação do Dólar</div>
-        {quotationsData ? (
+        {isLoading ? (
+          <div className="text-center text-gray-500">Carregando dados...</div>
+        ) : error ? (
+          <div className="text-center text-gray-500">Erro ao carregar os dados. Tente novamente mais tarde. 😕</div>
+        ) : quotationsData ? (
           <div className="text-lg">
             <span>USD para BRL: </span>
             <strong>R$ {quotationsData?.buy?.toFixed(2)}</strong>
           </div>
         ) : (
-          <div>Carregando dados...</div>
+          <div className="text-center text-gray-500">Nenhum dado disponível</div>
         )}
       </CardFooter>
     </Card>
