@@ -13,8 +13,14 @@ export const useHomeModel = () => {
     try {
       const response = await fetchAllStocks()
       const validResponse = APIResponseSchema.parse(response)
+      // eslint-disable-next-line no-console
+      console.log('validResponse ', validResponse)
+      
       setStocks(validResponse as ApiResponse)
-    } catch (err) {}
+    } catch (err) {
+     
+      
+    }
   }, [])
 
   const getVariationColor = (variation: number) => {

@@ -12,8 +12,13 @@ export const useDashboardModel = () => {
       const response = await fetchQuotations()
 
       const validResponse = APIResponseSchema.parse(response)
+       // eslint-disable-next-line no-console
+       console.log('validResponse ', validResponse)
       setQuotations(validResponse as ApiResponse)
-    } catch (err) {}
+    } catch (err) {
+       // eslint-disable-next-line no-console
+       console.log('err ', err)
+    }
   }, [])
 
   useEffect(() => {
