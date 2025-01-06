@@ -22,8 +22,7 @@ export class CreateFetchQuotationsService implements ICreateFetchQuotationsServi
     try {
       const responseDashboardQuotations = await this.httpClient.sendRequest<APIResponse, undefined>({
         method: HttpMethod.GET,
-        endpoint: `url`,
-        // endpoint: `/quotations${getEnv('VITE_SECRET_KEY')}`,
+        endpoint: `/quotations${getEnv('VITE_SECRET_KEY')}`,
       })
 
       return responseDashboardQuotations

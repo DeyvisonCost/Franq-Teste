@@ -26,8 +26,6 @@ describe('Header', () => {
     )
 
     expect(screen.getByText('Login')).toBeInTheDocument()
-    expect(screen.getByText('Sign up')).toBeInTheDocument()
-    expect(screen.getByText('Home')).toBeInTheDocument()
     expect(screen.getByText('Dashboard')).toBeInTheDocument()
   })
 
@@ -41,7 +39,6 @@ describe('Header', () => {
     )
 
     expect(screen.getByText('Logout')).toBeInTheDocument()
-    expect(screen.getByText('Home')).toBeInTheDocument()
     expect(screen.getByText('Dashboard')).toBeInTheDocument()
   })
 

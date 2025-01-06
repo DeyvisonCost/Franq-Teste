@@ -3,11 +3,11 @@ import { z } from 'zod'
 import { APIResponseSchema } from '@/presentation/views/Home/home.schema'
 
 export type ApiResponse = {
-  by: string
-  valid_key: boolean
+  by?: string
+  valid_key?: boolean
   results: {
     currencies: {
-      source: string
+      source?: string
       USD: Currency
       EUR: Currency
       GBP: Currency
@@ -34,10 +34,10 @@ export type ApiResponse = {
 }
 
 type Currency = {
-  name: string
-  buy: number
-  sell: number | null
-  variation: number
+  name?: string
+  buy?: number
+  sell?: number | null
+  variation?: number
 }
 
 type Stock = {
@@ -54,6 +54,16 @@ type Tax = {
   daily_factor: number
   selic_daily: number
   cdi_daily: number
+}
+
+export interface ModalContent {
+  name?: string
+  buy?: number
+  sell?: number
+  variation?: number
+  location?: string
+  points?: number
+  description?: string
 }
 
 export type APIResponse = z.infer<typeof APIResponseSchema>

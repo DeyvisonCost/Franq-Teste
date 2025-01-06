@@ -12,8 +12,7 @@ export class CreateFetchStocksService implements ICreateFetchStocksService {
     try {
       const responseHomeStocks = await this.HttpClient.sendRequest<APIResponse>({
         method: HttpMethod.GET,
-        endpoint: `${getEnv('VITE_SECRET_KEY')}`,
-        // endpoint: `/finance${getEnv('VITE_SECRET_KEY')}`,
+        endpoint: `/finance${getEnv('VITE_SECRET_KEY')}`,
       })
 
       return responseHomeStocks
