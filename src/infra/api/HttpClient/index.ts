@@ -6,11 +6,15 @@ import { getEnv } from '@/utils'
 export class HttpClient implements IHttpClient {
   constructor(
     private readonly api: AxiosInstance = axios,
-    private readonly baseUrl: string = getEnv('VITE_BASE_URL')
+    private baseUrl: string = getEnv('VITE_BASE_URL')
   ) {}
 
-  static create() {
-    return new HttpClient()
+  static create(baseUrl?: string) {
+    return new HttpClient(axios, baseUrl || getEnv('VITE_BASE_URL'))
+  }
+
+  setBaseUrl(newBaseUrl: string): void {
+    this.baseUrl = newBaseUrl
   }
 
   async sendRequest<TResponse, TBody>(props: HttpRequest<TBody>): Promise<TResponse> {
