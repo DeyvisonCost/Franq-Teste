@@ -20,8 +20,6 @@ export class HttpClient implements IHttpClient {
   async sendRequest<TResponse, TBody>(props: HttpRequest<TBody>): Promise<TResponse> {
     const { endpoint, method, body, headers } = props
 
-
-
     try {
       const { data } = await this.api.request<TResponse>({
         url: `${this.baseUrl}${endpoint}`,
