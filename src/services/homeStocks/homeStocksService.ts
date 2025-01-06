@@ -1,6 +1,4 @@
-import axios from 'axios'
-
-import { APIResponseSchema } from '@/presentation/views/Home/home.schema'
+import { HttpMethod, IHttpClient } from '@/infra/api/HttpClientContract'
 import { APIResponse } from '@/presentation/views/Home/home.types'
 import { getEnv } from '@/utils'
 
@@ -9,19 +7,15 @@ export interface ICreateHomeStocksService {
 }
 
 export class CreateHomeStocksService implements ICreateHomeStocksService {
+  constructor(private readonly HttpClient: IHttpClient) {}
   async exec(): Promise<APIResponse> {
-    const baseUrl = getEnv('VITE_BASE_URL')
-
-    if (!baseUrl) {
-      throw new Error('API URL not defined')
-    }
-
     try {
-      const { data } = await axios.get(`${baseUrl}/finance`)
+      const responseHomeStocks = await this.HttpClient.sendRequest<APIResponse>({
+        method: HttpMethod.GET,
+        endpoint: `/finance${getEnv('VITE_SECRET_KEY')}`,
+      })
 
-      const parsedData = APIResponseSchema.parse(data)
-
-      return parsedData
+      return responseHomeStocks
     } catch (error) {
       throw new Error('Falha ao obter dados da API.')
     }
