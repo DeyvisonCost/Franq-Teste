@@ -14,6 +14,15 @@ const stockSchema = z.object({
   variation: z.number(),
 })
 
+const taxSchema = z.object({
+  date: z.string(),
+  cdi: z.number(),
+  selic: z.number(),
+  daily_factor: z.number(),
+  selic_daily: z.number(),
+  cdi_daily: z.number(),
+})
+
 export const APIResponseSchema = z.object({
   by: z.string(),
   valid_key: z.boolean(),
@@ -39,7 +48,7 @@ export const APIResponseSchema = z.object({
       NIKKEI: stockSchema,
     }),
     available_sources: z.array(z.string()),
-    taxes: z.array(z.any()),
+    taxes: z.array(taxSchema).optional(),
   }),
   execution_time: z.number(),
   from_cache: z.boolean(),

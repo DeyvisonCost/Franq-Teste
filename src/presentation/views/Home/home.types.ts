@@ -27,7 +27,7 @@ export type ApiResponse = {
       NIKKEI: Stock
     }
     available_sources: string[]
-    taxes: string[]
+    taxes?: Tax[]
   }
   execution_time: number
   from_cache: boolean
@@ -45,6 +45,15 @@ type Stock = {
   location: string
   points: number
   variation: number
+}
+
+type Tax = {
+  date: string
+  cdi: number
+  selic: number
+  daily_factor: number
+  selic_daily: number
+  cdi_daily: number
 }
 
 export type APIResponse = z.infer<typeof APIResponseSchema>
