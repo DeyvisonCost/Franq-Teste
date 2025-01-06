@@ -15,14 +15,12 @@ export class CreateFetchQuotationsService implements ICreateFetchQuotationsServi
   }
 
   async fetchQuotations(): Promise<APIResponse> {
-    const customBaseUrl = getEnv('VITE_FINANCE_URL')
 
-    this.httpClient.setBaseUrl(customBaseUrl)
 
     try {
       const responseDashboardQuotations = await this.httpClient.sendRequest<APIResponse, undefined>({
         method: HttpMethod.GET,
-        endpoint: `/quotations${getEnv('VITE_SECRET_KEY')}`,
+        endpoint: `finance/quotations${getEnv('VITE_SECRET_KEY')}`,
       })
 
       return responseDashboardQuotations
