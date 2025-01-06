@@ -20,11 +20,20 @@ export class HttpClient implements IHttpClient {
   async sendRequest<TResponse, TBody>(props: HttpRequest<TBody>): Promise<TResponse> {
     const { endpoint, method, body, headers } = props
 
+    const updatedHeaders = {
+      'Access-Control-Allow-Credentials': 'true',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers':
+        'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
+      ...headers,
+    }
+
     try {
       const { data } = await this.api.request<TResponse>({
         url: `${this.baseUrl}${endpoint}`,
         method,
-        headers,
+        headers: updatedHeaders,
         data: body,
       })
 
