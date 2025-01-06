@@ -1,13 +1,18 @@
 import React, { FC } from 'react'
 
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 
 import { Header } from '@/components/Header'
+import { ROUTES } from '@/config/routes'
 
 export const MainLayout: FC = () => {
+  const location = useLocation()
+
+  const hideHeaderRoutes = [ROUTES.LOGIN, ROUTES.SIGNUP]
+
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
+      {!hideHeaderRoutes.includes(location.pathname) && <Header />}
       <main className="flex-grow">
         <Outlet />
       </main>

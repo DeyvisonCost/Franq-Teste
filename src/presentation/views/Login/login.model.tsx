@@ -1,30 +1,42 @@
-import { useState } from 'react'
-
+import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
 import { ROUTES } from '@/config/routes'
 import { useAuth } from '@/hooks/useAuth'
+import { loginSchema } from '@/presentation/views/Login/login.schema'
+import { LoginFormValues } from '@/presentation/views/Login/login.types'
+import { zodResolver } from '@hookform/resolvers/zod'
 
 export const useLoginModel = () => {
   const { login } = useAuth()
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
   const navigate = useNavigate()
 
-  const handleLogin = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginFormValues>({
+    resolver: zodResolver(loginSchema),
+  })
+
+  const onSubmit = (data: LoginFormValues) => {
     try {
-      login(email, password)
+      login(data.email, data.password)
       navigate(ROUTES.DASHBOARD)
     } catch (error) {
       alert(error)
     }
   }
 
+  const navigateToSignup = () => {
+    navigate(ROUTES.SIGNUP)
+  }
+
   return {
-    email,
-    setEmail,
-    password,
-    setPassword,
-    handleLogin,
+    register,
+    handleSubmit,
+    errors,
+    onSubmit,
+    navigateToSignup,
   }
 }

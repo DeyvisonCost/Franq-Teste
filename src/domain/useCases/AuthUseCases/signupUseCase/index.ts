@@ -1,7 +1,13 @@
 import { User } from '@/domain/models/User'
 import { AuthService } from '@/services/AuthService'
 
-export const signupUseCase = (email: string, password: string, name?: string) => {
+type SignupParams = {
+  email: string
+  password: string
+  name?: string
+}
+
+export const signupUseCase = ({ email, password, name }: SignupParams) => {
   try {
     const user = new User(email, password, name)
     return AuthService.signup(user)
