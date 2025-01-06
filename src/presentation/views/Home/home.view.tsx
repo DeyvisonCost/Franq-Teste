@@ -8,9 +8,14 @@ import { useHomeModel } from '@/presentation/views/Home/home.model'
 import { ModalContent } from '@/presentation/views/Home/home.types'
 import { formatToBRL } from '@/utils'
 
-export const HomeView = () => {
-  const { stocks, isModalOpen, modalContent, getVariationColor, openModalWithContent, closeModal } = useHomeModel()
-
+export const HomeView = ({
+  stocks,
+  isModalOpen,
+  modalContent,
+  getVariationColor,
+  openModalWithContent,
+  closeModal,
+}: ReturnType<typeof useHomeModel>) => {
   if (!stocks) {
     return <LoadingFallback />
   }
