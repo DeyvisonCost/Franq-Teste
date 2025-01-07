@@ -115,6 +115,23 @@ O projeto segue uma estrutura modular organizada. Aqui está um resumo:
 - **src/infra**: Configurações de API e clientes HTTP.
 - **public**: Arquivos públicos como imagens e ícones.
 
+├── public/ # Arquivos estáticos (imagens, ícones)
+├── src/
+│ ├── components/ # Componentes reutilizáveis
+│ ├── config/ # Configurações (ex.: rotas)
+│ ├── domain/ # Modelos e casos de uso
+│ ├── hooks/ # Hooks personalizados
+│ ├── infra/ # Camada de infraestrutura (ex.: APIs)
+│ ├── lib/ # Funções auxiliares
+│ ├── presentation/ # Layouts e visualizações (views)
+│ ├── global.css # Estilização global com TailwindCSS
+│ └── main.tsx # Ponto de entrada do aplicativo
+├── setup-tests.ts # Configurações de testes
+├── package.json # Dependências e scripts
+├── tsconfig.json # Configurações do TypeScript
+├── .eslintrc.json # Configurações do ESLint
+└── babel.config.js # Configurações do Babel
+
 ## Tecnologias e Bibliotecas Utilizadas
 
 - **React**: Biblioteca principal para construção da interface.
