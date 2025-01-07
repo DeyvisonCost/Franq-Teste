@@ -15,12 +15,10 @@ export class CreateFetchQuotationsService implements ICreateFetchQuotationsServi
   }
 
   async fetchQuotations(): Promise<APIResponse> {
-
-
     try {
       const responseDashboardQuotations = await this.httpClient.sendRequest<APIResponse, undefined>({
         method: HttpMethod.GET,
-        endpoint: `finance/quotations${getEnv('VITE_SECRET_KEY')}`,
+        endpoint: `/finance/quotations${getEnv('VITE_SECRET_KEY')}`,
       })
 
       return responseDashboardQuotations
